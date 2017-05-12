@@ -3,9 +3,13 @@ package bg.proxiad.cours;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-public class SimpleCalculator implements Calculator {
+@Component
+@Qualifier("wrong")
+public class WrongCalculator implements Calculator {
 	
 	@PostConstruct
 	public void neshtoGotinoPriStart() {
@@ -22,7 +26,7 @@ public class SimpleCalculator implements Calculator {
 		CalculatorResult result = new CalculatorResult();
 		result.setOperand1(op1);
 		result.setOperand2(op2);
-		result.setResult(op1 + op2);
+		result.setResult(op1 * op2);
 		return result;
 	}
 }
